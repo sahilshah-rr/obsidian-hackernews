@@ -7,10 +7,12 @@
   export let refreshInterval: number;
 
   let dataHN: HNItem[];
+  let lastFetchedAt: number = 0;
 
   export async function fetchTopHN() {
     console.log('fetching top story from HackerNews');
     dataHN = await manager.requestTopStories();
+    lastFetchedAt = Date.now();
   }
 
   export async function saveHNItem(index: number) {
@@ -40,6 +42,9 @@
           </p>
         </div>
       {/each}
+      {#if lastFetchedAt !== 0}
+        <p class="hn-meta">Last fetched at { new Date(lastFetchedAt).toLocaleTimeString() }.</p>
+      {/if}
     </div>
   {/if}
   <p class="hn-meta">Refreshes every { refreshInterval } seconds.</p>
