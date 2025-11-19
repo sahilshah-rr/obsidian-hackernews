@@ -1,5 +1,5 @@
 export interface HackerNewsSettings {
-	defaultRefreshInterval: string;
+	refreshInterval: number;
 	storiesFolder: string;
 	storyTemplate: string;
 }

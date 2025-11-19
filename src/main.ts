@@ -13,7 +13,7 @@ import t from 'src/l10n/helpers';
 export default class HackerNewsPlugin extends Plugin {
     settings: HackerNewsSettings;
     manager: APIManager;
-    
+
     async onload(): Promise<void> {
         console.log('loading hackernews');
 
@@ -37,15 +37,12 @@ export default class HackerNewsPlugin extends Plugin {
 
         this.app.workspace.onLayoutReady(this.openWindowLeaf.bind(this))
 
-        let refreshInterval = parseInt(this.settings.defaultRefreshInterval)
-        if (Number.isNaN(refreshInterval) || refreshInterval <= 0) { refreshInterval = 60 }
-
         dispatchEvent(new Event('obsidian-hackernews-fetchTopHN'))
         this.registerInterval(window.setInterval(() => {
             dispatchEvent(new Event('obsidian-hackernews-fetchTopHN'))
-        }, refreshInterval * 1000))
+        }, this.settings.refreshInterval * 1000))
 
-        console.log('refreshInterval', refreshInterval, 'seconds');
+        console.log('refreshInterval', this.settings.refreshInterval, 'seconds');
     }
 
     onunload(): void {

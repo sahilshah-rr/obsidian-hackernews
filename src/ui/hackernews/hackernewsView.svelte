@@ -4,7 +4,7 @@
   import type { HNItem } from "src/integrations/types";
   
   export let manager: APIManager;
-  export let refreshInterval: string;
+  export let refreshInterval: number;
 
   let dataHN: HNItem;
 

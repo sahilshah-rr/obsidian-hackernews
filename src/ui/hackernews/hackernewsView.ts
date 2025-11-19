@@ -36,12 +36,9 @@ export default class HackerNewsView extends ItemView {
             target: this.contentEl,
             props: {
                 manager: this.plugin.manager,
+                refreshInterval: this.plugin.settings.refreshInterval,
             }
-        });
-        this._view.$set({
-            refreshInterval: this.plugin.settings.defaultRefreshInterval,
         });
         return super.onOpen();
     }
-
 }

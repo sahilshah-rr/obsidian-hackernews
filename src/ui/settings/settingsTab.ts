@@ -2,6 +2,7 @@ import type HackerNewsPlugin from "src/main";
 
 import { App, PluginSettingTab, Setting } from "obsidian";
 import t from "src/l10n/helpers";
+import { DEFAULT_SETTINGS } from "src/_constants";
 
 export default class SettingsTab extends PluginSettingTab {
     plugin: HackerNewsPlugin;
@@ -22,12 +23,12 @@ export default class SettingsTab extends PluginSettingTab {
             .setName(t('Refresh Interval'))
             .setDesc(t('The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.'))
             .addText(text => text
-                .setPlaceholder('60')
-                .setValue(plugin.settings.defaultRefreshInterval)
+                .setPlaceholder(DEFAULT_SETTINGS.refreshInterval.toString())
+                .setValue(plugin.settings.refreshInterval.toString())
                 .onChange(async (value) => {
                     let refreshInterval = parseInt(value)
-                    if (Number.isNaN(refreshInterval) || refreshInterval <= 0) { refreshInterval = 60 }
-                    plugin.settings.defaultRefreshInterval = `${refreshInterval}`;
+                    if (Number.isNaN(refreshInterval) || refreshInterval <= 0) { refreshInterval = DEFAULT_SETTINGS.refreshInterval; }
+                    plugin.settings.refreshInterval = refreshInterval;
                     await this.save();
                 }));
         new Setting(containerEl)

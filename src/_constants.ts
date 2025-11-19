@@ -13,8 +13,8 @@ export const RFC = {
     "en_US": "en-US",
 }
 
-export const DEFAULT_SETTINGS: HackerNewsSettings = {
-    defaultRefreshInterval: "60",
+export const DEFAULT_SETTINGS: Partial<HackerNewsSettings> = {
+    refreshInterval: 60,
     storiesFolder: "HackerNews",
     storyTemplate: `---
 date: {{date}}
