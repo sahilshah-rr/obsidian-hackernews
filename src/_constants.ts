@@ -14,6 +14,7 @@ export const RFC = {
 }
 
 export const DEFAULT_SETTINGS: Partial<HackerNewsSettings> = {
+    numberOfStories: 5,
     refreshInterval: 60,
     storiesFolder: "HackerNews",
     storyTemplate: `---

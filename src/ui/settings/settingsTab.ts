@@ -18,6 +18,21 @@ export default class SettingsTab extends PluginSettingTab {
         containerEl.empty();
 
         new Setting(containerEl)
+            .setName(t('Number of Stories'))
+            .setDesc(t('The number of top stories to fetch from HackerNews. Max is 10.'))
+            .addText(text => text
+                .setPlaceholder(DEFAULT_SETTINGS.numberOfStories.toString())
+                .setValue(plugin.settings.numberOfStories.toString())
+                .onChange(async (value) => {
+                    let numberOfStories = parseInt(value)
+                    if (Number.isNaN(numberOfStories) || numberOfStories <= 0 || numberOfStories > 10) {
+                        numberOfStories = DEFAULT_SETTINGS.numberOfStories;
+                    }
+                    plugin.settings.numberOfStories = numberOfStories;
+                    await this.save();
+                }));
+
+        new Setting(containerEl)
             .setName(t('Refresh Interval'))
             .setDesc(t('The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.'))
             .addText(text => text

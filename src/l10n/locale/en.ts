@@ -6,6 +6,8 @@ export default {
 
     //settingsTab.ts
     'HackerNews Settings': 'HackerNews Settings',
+    'Number of Stories': 'Number of Stories',
+    'The number of top stories to fetch from HackerNews. Max is 10.': 'The number of top stories to fetch from HackerNews. Max is 10.',
     'Refresh Interval': 'Refresh Interval',
     'The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.': 'The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.',
     'Stories Folder': 'Stories Folder',
