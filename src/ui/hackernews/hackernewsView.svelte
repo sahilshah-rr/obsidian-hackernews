@@ -2,6 +2,7 @@
   import { onDestroy } from 'svelte';
   import type APIManager from "src/apiManager";
   import type { HNItem } from "src/integrations/types";
+  import t from 'src/l10n/helpers';
 
   export let manager: APIManager;
   export let refreshInterval: number;
@@ -34,20 +35,20 @@
         <div class="container">
           <a href="{ storyHN.url }" target="_blank" class="hn-link">{ storyHN.title }</a>
           <p class="hn-actions">
-            <a href="{ storyHN.url }" target="_blank">Read</a>
+            <a href="{ storyHN.url }" target="_blank">{ t('action-read') }</a>
             •
-            <a href="https://news.ycombinator.com/item?id={ storyHN.id }" target="_blank">Discuss</a>
+            <a href="https://news.ycombinator.com/item?id={ storyHN.id }" target="_blank">{ t('action-discuss') }</a>
             •
-            <a href="/" on:click|once|preventDefault={() => saveHNItem(index)}>Save</a>
+            <a href="/" on:click|once|preventDefault={() => saveHNItem(index)}>{ t('action-save') }</a>
           </p>
         </div>
       {/each}
       {#if lastFetchedAt !== 0}
-        <p class="hn-meta">Last fetched at { new Date(lastFetchedAt).toLocaleTimeString() }.</p>
+        <p class="hn-meta">{ t('meta-last-fetch') } { new Date(lastFetchedAt).toLocaleTimeString() }.</p>
       {/if}
     </div>
   {/if}
-  <p class="hn-meta">Refreshes every { refreshInterval } seconds.</p>
+  <p class="hn-meta">{ t('meta-refresh-interval') } { refreshInterval } { t('setting-refresh-interval-unit') }.</p>
 </div>
 
 <style lang="scss">

@@ -31,7 +31,7 @@ export default class HackerNewsPlugin extends Plugin {
 
         this.addCommand({
             id: 'hackernews-open-view',
-            name: t('Open HackerNews'),
+            name: t('command-open'),
             callback: this.openWindowLeaf.bind(this),
         });
 

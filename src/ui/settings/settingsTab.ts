@@ -18,8 +18,8 @@ export default class SettingsTab extends PluginSettingTab {
         containerEl.empty();
 
         new Setting(containerEl)
-            .setName(t('Number of Stories'))
-            .setDesc(t('The number of top stories to fetch from HackerNews. Max is 10.'))
+            .setName(t('setting-number-of-stories'))
+            .setDesc(t('setting-number-of-stories-desc'))
             .addText(text => text
                 .setPlaceholder(DEFAULT_SETTINGS.numberOfStories.toString())
                 .setValue(plugin.settings.numberOfStories.toString())
@@ -33,8 +33,8 @@ export default class SettingsTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
-            .setName(t('Refresh Interval'))
-            .setDesc(t('The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.'))
+            .setName(t('setting-refresh-interval'))
+            .setDesc(t('setting-refresh-interval-desc'))
             .addText(text => text
                 .setPlaceholder(DEFAULT_SETTINGS.refreshInterval.toString())
                 .setValue(plugin.settings.refreshInterval.toString())
@@ -46,8 +46,8 @@ export default class SettingsTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
-            .setName(t('Stories Folder'))
-            .setDesc(t('The folder that holds the saved HackerNews stories. The folder will be created if it does not exist.'))
+            .setName(t('setting-stories-folder'))
+            .setDesc(t('setting-stories-folder-desc'))
             .addText(text => text
                 .setPlaceholder(DEFAULT_SETTINGS.storiesFolder)
                 .setValue(plugin.settings.storiesFolder)
@@ -57,8 +57,8 @@ export default class SettingsTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
-            .setName(t('Story Template'))
-            .setDesc(t('Specify how the HackerNews story is saved; available attributes: title, url, date.'))
+            .setName(t('setting-story-template'))
+            .setDesc(t('setting-story-template-desc'))
             .addTextArea(text => text
                 .setPlaceholder('stories folder')
                 .setValue(plugin.settings.storyTemplate)
