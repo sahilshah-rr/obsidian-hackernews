@@ -31,6 +31,7 @@ export default class SettingsTab extends PluginSettingTab {
                     plugin.settings.refreshInterval = refreshInterval;
                     await this.save();
                 }));
+
         new Setting(containerEl)
             .setName(t('Stories Folder'))
             .setDesc(t('The folder that holds the saved HackerNews stories. The folder will be created if it does not exist.'))
@@ -41,6 +42,7 @@ export default class SettingsTab extends PluginSettingTab {
                     plugin.settings.storiesFolder = value;
                     await this.save();
                 }));
+
         new Setting(containerEl)
             .setName(t('Story Template'))
             .setDesc(t('Specify how the HackerNews story is saved; available attributes: title, url, date.'))
@@ -51,13 +53,6 @@ export default class SettingsTab extends PluginSettingTab {
                     plugin.settings.storyTemplate = value;
                     await this.save();
                 }));
-        new Setting(containerEl)
-            .setName(t('Donate'))
-            .setDesc(t('If you found this plugin helpful, consider donating to support continued development.'))
-            .setClass("extra")
-            .addButton((bt) => {
-                bt.buttonEl.outerHTML = `<a href="https://www.buymeacoffee.com/arpitbhayani"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=arpitbhayani&button_colour=5F7FFF&font_colour=ffffff&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00"></a>`;
-            });
     }
 
     private async save() {
