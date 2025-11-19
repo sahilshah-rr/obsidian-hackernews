@@ -17,8 +17,6 @@ export default class SettingsTab extends PluginSettingTab {
 
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: t('HackerNews Settings') });
-
         new Setting(containerEl)
             .setName(t('Refresh Interval'))
             .setDesc(t('The time interval in seconds after which the next top story will be fetched. Default and invalid values will be reverted to 60 seconds.'))
@@ -36,7 +34,7 @@ export default class SettingsTab extends PluginSettingTab {
             .setName(t('Stories Folder'))
             .setDesc(t('The folder that holds the saved HackerNews stories. The folder will be created if it does not exist.'))
             .addText(text => text
-                .setPlaceholder('stories folder')
+                .setPlaceholder(DEFAULT_SETTINGS.storiesFolder)
                 .setValue(plugin.settings.storiesFolder)
                 .onChange(async (value) => {
                     plugin.settings.storiesFolder = value;
